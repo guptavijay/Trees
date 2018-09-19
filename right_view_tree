@@ -1,0 +1,40 @@
+void rightView(Node *root)
+{
+   // Your Code here
+   queue<Node *> q;
+   q.push(root);
+   q.push(NULL);
+   vector<int> v;
+   v.push_back(root->data);                     // level order traversal
+   cout<<v[0]<<" ";
+   while(!q.empty())                    // made a vector and inserted all nodes into a vector and when we found a nULL we print the last
+                                             //element in vector present at that time.
+   {
+       Node * p=q.front();
+
+       q.pop();
+       
+       if(p==NULL)
+       {
+          
+           if(!q.empty())
+           { cout<<v[v.size()-1]<<" ";
+               q.push(NULL);
+           }
+       }
+       else
+       {
+           if(p->left)
+           {
+               v.push_back(p->left->data);
+               q.push(p->left);
+           }
+           if(p->right)
+           {
+                v.push_back(p->right->data);
+               q.push(p->right);
+           }
+       }
+   }
+   
+}
